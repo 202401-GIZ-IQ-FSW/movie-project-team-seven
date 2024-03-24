@@ -14,7 +14,7 @@ function Footer() {
           <div className='flex flex-col items-center'>
             <h3 className="text-lg font-semibold">Ahmed Qarany</h3>
             <a href="https://github.com/ahmadqaranyfarhan" className="mt-4 block text-base leading-6 text-gray-300 hover:text-gray-700"><i className="fa-brands fa-github"></i> GitHup</a>
-            <a href="#" className="mt-4 block text-base leading-6 text-gray-300 hover:text-blue-400"><i className="fa-brands fa-linkedin"></i> LinkidIn</a>
+            <a href="https://www.linkedin.com/in/ahmad-qarany-farhan-72bb30229/" className="mt-4 block text-base leading-6 text-gray-300 hover:text-blue-400"><i className="fa-brands fa-linkedin"></i> LinkidIn</a>
           </div>
           <div className='flex flex-col items-center'>
             <h3 className="text-lg font-semibold">Ara Kardo</h3>
