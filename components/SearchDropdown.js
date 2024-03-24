@@ -1,14 +1,14 @@
 import React from 'react';
 import AsyncSelect from 'react-select/async';
  
-export default function SearchDropdown({setSearchValue}) { 
- 
+export default function SearchDropdown({setSearchValue, handleEnter, setSearchResults}) { 
+
   // handle selection
   function handleChange (value){
     setSearchValue(value);
   }
   let isLoading;
-
+  
   // load options using API call
   const loadOptions = (inputValue) => {
     isLoading = true;
@@ -16,23 +16,26 @@ export default function SearchDropdown({setSearchValue}) {
     .then(res => res.json())
     .then(data => {
       isLoading=false;
-      return data.results;
-    });
+      setSearchResults(data.results);
+      if(inputValue) {
+        return (data.results.length > 0)? [{title: inputValue , id: inputValue} , ...data.results]: []
+  }});
   };
  
   const styles= {
     control: (styles) => ({ 
         ...styles, 
         backgroundColor: 'transparent',
-        color: 'white', 
-        border:"none", 
-        fontSize:"16px", 
+        color: 'white',
+        border:0, 
+        boxShadow: 'none',
+        fontSize:"14px", 
         cursor: "pointer",
     }),
     option: (styles, {isSelected, isFocused}) => ({
         ...styles,
-        backgroundColor : isFocused? "tomato": isSelected ? 'red' : 'black',
-        color: isFocused? "red": isSelected ? 'black' : 'white',
+        backgroundColor : isFocused? "cyan": isSelected ? 'rgb(30, 223, 223)' : 'black',
+        color: isSelected ? 'black' : 'white',
     }),
     
     menu: (styles) => ({
@@ -53,7 +56,7 @@ export default function SearchDropdown({setSearchValue}) {
         background: "#888"
       },
       "::-webkit-scrollbar-thumb:hover": {
-        background: "red",
+        background: "cyan",
         cursor:"grab"
       },
       "::-webkit-scrollbar-thumb:active": {
@@ -72,24 +75,31 @@ export default function SearchDropdown({setSearchValue}) {
     }),
     singleValue: (styles) => ({ 
         ...styles, 
-        color: 'red', 
+        color: 'cyan', 
     }),
   }
 
   return (
-    <div className="App">
       <AsyncSelect
+        instanceId='search'
+        name='search'
         cacheOptions
         defaultOptions
-        getOptionLabel={e => e.title}
-        getOptionValue={e => e.id}
+        getOptionLabel={movie => movie.title}
+        getOptionValue={movie => movie.id}
         loadOptions={loadOptions}
         onChange={handleChange}
         styles={styles}
-        components={{ DropdownIndicator:() => null , IndicatorSeparator:() => null , NoOptionsMessage:()=><p className="text-gray-500 px-2">Ready for fun?</p>}}
+        components={{ DropdownIndicator:(() => <i className="fa-solid fa-magnifying-glass text-white"></i>),
+        IndicatorSeparator:() => null }}
+        noOptionsMessage={({inputValue}) => !inputValue ? "Start the fun!" : "Check your spelling..."}
         placeholder= 'Search a movie...'
         isLoading= {isLoading}
+        onKeyDown={(event)=> {
+          if(event.key === 'Enter'){
+            handleEnter()
+          }
+        }}
       />
-    </div>
   );
 }

@@ -69,13 +69,13 @@ function Dropdwon({ name , options , setValue, setID }) {
     return (
       <div  className="hover:bg-gray-800 hover:rounded-lg hover:cursor-pointer">
         <Select 
+        id={name}
         options={options} 
         defaultValue={null} 
         placeholder={name} 
         // pass value to state using callback function
         onChange={handleSelect}
         instanceId={name}
-        className=' text-red-500'
         components={{
             IndicatorSeparator: () => null
           }}

@@ -4,6 +4,14 @@ import Dropdwon from './Dropdwon'
 import SearchDropdown from './SearchDropdown';
 import Link from 'next/link';
 
+
+export const Moviesoptions=[
+    {value: "top_rated", label:'Top Rate'},
+    {value: "populer", label:'Popular'},
+    {value: "latest", label:'Latest'},
+    {value: "now_playing", label:'Now playing'},
+    {value: "upcoming", label:'Upcoming'},
+]
 function NavBar() {
 
     const [genres, setGenres]=useState([])
@@ -12,6 +20,8 @@ function NavBar() {
     const [moviesValue, setMoviesValue] = useState(null);
     const [genresValue, setGenresValue] = useState(null);
     const [genresID, setGenresID] = useState(null);
+    const [searchResults, setSearchResults] = useState('');
+
 
     // get selected movie info from searchbar
     const [movieInfo, setMovieInfo] = useState(null);
@@ -22,10 +32,13 @@ function NavBar() {
     // console.log("searched movie info: ");
     // console.log(movieInfo);
 
-
+    function handleSearchEnter(){
+        console.log("Search results: " , searchResults)
+    }
+    
     useEffect( () => {
         // fetch Genres from API
-        console.log("use effect")
+        // console.log("use effect")
         fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=ba21689db16b6c3bc58c8f5c53ebd129')
             .then((response) => response.json())
             .then((data) => {
@@ -49,13 +62,7 @@ function NavBar() {
             })  //set the data to our state variable
     },[])
 
-    const Moviesoptions=[
-        {value: "top_rated", label:'Top Rate'},
-        {value: "populer", label:'Popular'},
-        {value: "latest", label:'Latest'},
-        {value: "now_playing", label:'Now playing'},
-        {value: "upcoming", label:'Upcoming'},
-    ]
+
 
     // with path:
     // const Moviesoptions=[
@@ -68,13 +75,13 @@ function NavBar() {
     
   return (
     //   Navbar - The Navbar should show up on all pages and contains the following:
-    <nav className="w-full px-4 flex flex-nowrap items-center justify-between bg-black py-2 lg:flex-wrap lg:py-4">
+    <nav className="w-full p-2 sm:px-4 grid grid-rows-2 grid-cols-[auto_auto] md:flex flex-wrap md:flex-nowrap items-center justify-between bg-black py-2 lg:flex-wrap lg:py-4">
         
         {/* Logo */}
         {/* <img src="" alt="logo"/> */}
-        <Link href="/"><i className="fa-brands fa-playstation text-[40px] text-white hover:text-cyan-400"></i></Link>
+        <Link href="/"><i className="fa-brands fa-playstation text-[30px] md:text-[40px] text-white hover:text-cyan-400"></i></Link>
         
-        <div className="flex flex-nowrap gap-x-4 items-center justify-between">
+        <div className="flex flex-nowrap md:gap-x-4 items-center justify-between">
             {/* Genres - This is a drop down that include the genres of all movies. The Genres should be fetched from the API. */}
             <Dropdwon name="Genres" options={genres} setValue={setGenresValue} setID={setGenresID}/>
             
@@ -86,11 +93,13 @@ function NavBar() {
         </div>
 
             {/* Search Bar */}
-        <div className='group w-8 h-8 flex justify-center items-center relative rounded-full border focus-within:border-none'>
-            <div className='group-hover:block has-[:focus]:block w-[250px] hidden absolute right-0  '>
-                <SearchDropdown setSearchValue={setMovieInfo}/>
+        <div className='h-8 group relative col-span-2'>
+            <div className='group-hover:block border-b-[1px] border-gray-400 focus-within:border-cyan-300 has-[:focus]:block w-full md:w-[200px] md:hidden absolute right-0'>
+                <SearchDropdown setSearchValue={setMovieInfo} setSearchResults={setSearchResults} handleEnter={handleSearchEnter}/>
             </div>
+            <div className='w-8 h-8 flex justify-center items-center rounded-full border group-hover:invisible group-focus-within:invisible invisible md:visible'>
             <i className="fa-solid fa-magnifying-glass text-white"></i>
+            </div>
         </div>
     </nav>
   )
