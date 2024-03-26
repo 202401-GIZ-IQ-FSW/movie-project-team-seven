@@ -19,10 +19,10 @@ function Dropdwon({ name , options , setValue, setID }) {
             width: "100px"
         }),
         option: (styles, {isSelected, isFocused}) => ({
-            ...styles,
-            backgroundColor : isSelected ? 'red' : isFocused? "tomato": 'black',
-            color: isSelected ? 'black' :isFocused? "red": 'white',
-        }),
+          ...styles,
+          backgroundColor : isFocused? "cyan": isSelected ? 'rgb(30, 223, 223)' : 'black',
+          color: isSelected ? 'black' : 'white',
+      }),
         
         menu: (styles) => ({
             ...styles,
@@ -62,7 +62,7 @@ function Dropdwon({ name , options , setValue, setID }) {
         }),
         singleValue: (styles) => ({ 
             ...styles, 
-            color: 'red', 
+            color: 'cyan', 
             width: "100px",
         }),
         }
