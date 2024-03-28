@@ -21,3 +21,11 @@
     text-wrap: balance;
   }
 }
+
+body{
+  background-color: black;
+}
+
+.slick-next:before {
+  margin-right: 20px;
+}
