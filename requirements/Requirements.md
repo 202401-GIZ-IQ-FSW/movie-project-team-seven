@@ -41,6 +41,7 @@ Your website need to have the following pages:
 2. Movies page - This page contains lists of movies. Depending on the user choice in the Navbar (See above) this page shows the corresponding information. For example, if the user clicked on "Top rated" in the Navbar this page shows all the top rated movies. This page will act almost similar to the home page. It will show lists of movies. When the user clicks on a movie it takes them to the Single Movie Page (#3)
 3. Single Movie page - This pages shows the information about the current movie.
    1. It should contain the following information:
+   
       1. The movie poster
       2. The movie title
       3. Release date

@@ -1,13 +1,19 @@
 import React from 'react';
 import Select from "react-select";
+import { useRouter } from 'next/navigation';
 
-function Dropdwon({ name , options , setValue, setID }) {
+function Dropdwon({ name , options }) {
+   // handle selection
+   const router = useRouter();
+   function handleSelect (input){
+     console.log(input.value)
+     if(input.value === "all") {
+       router.push(`/movies`);
+     } else{
+       router.push(`/movies/genres/${input.value}`)
+     }
+   }
     // custom style for Select component 
-    
-    function handleSelect(object){
-      setValue(object.value);
-      if(setID) setID(object.id);
-    }
     const styles ={
         control: (styles) => ({ 
             ...styles, 
@@ -22,6 +28,7 @@ function Dropdwon({ name , options , setValue, setID }) {
           ...styles,
           backgroundColor : isFocused? "cyan": isSelected ? 'rgb(30, 223, 223)' : 'black',
           color: isSelected ? 'black' : 'white',
+          cursor: "pointer",
       }),
         
         menu: (styles) => ({
@@ -73,9 +80,8 @@ function Dropdwon({ name , options , setValue, setID }) {
         options={options} 
         defaultValue={null} 
         placeholder={name} 
-        // pass value to state using callback function
-        onChange={handleSelect}
         instanceId={name}
+        onChange={(inputValue) => handleSelect(inputValue)}
         components={{
             IndicatorSeparator: () => null
           }}
