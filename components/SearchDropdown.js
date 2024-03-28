@@ -1,22 +1,29 @@
 import React from 'react';
 import AsyncSelect from 'react-select/async';
+import { useRouter } from 'next/navigation';
  
-export default function SearchDropdown({setSearchValue, handleEnter, setSearchResults}) { 
+export default function SearchDropdown() { 
 
   // handle selection
-  function handleChange (value){
-    setSearchValue(value);
+  const router = useRouter();
+  function handleSelect (input){
+    console.log(input.id)
+    if(isNaN(input.id)) {
+      router.push(`/search/${input.id}`);
+    } else{
+      router.push(`/movies/${input.id}`)
+    }
   }
+  
   let isLoading;
   
   // load options using API call
   const loadOptions = (inputValue) => {
     isLoading = true;
-    return fetch(`https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&api_key=ba21689db16b6c3bc58c8f5c53ebd129&query=${inputValue}`)
+    return fetch(`https://api.themoviedb.org/3/search/movie?include_video=false&language=en-US&api_key=ba21689db16b6c3bc58c8f5c53ebd129&query=${inputValue}`)
     .then(res => res.json())
     .then(data => {
       isLoading=false;
-      setSearchResults(data.results);
       if(inputValue) {
         return (data.results.length > 0)? [{title: inputValue , id: inputValue} , ...data.results]: []
   }});
@@ -88,18 +95,13 @@ export default function SearchDropdown({setSearchValue, handleEnter, setSearchRe
         getOptionLabel={movie => movie.title}
         getOptionValue={movie => movie.id}
         loadOptions={loadOptions}
-        onChange={handleChange}
+        onChange={(inputValue) =>handleSelect(inputValue)}
         styles={styles}
         components={{ DropdownIndicator:(() => <i className="fa-solid fa-magnifying-glass text-white"></i>),
         IndicatorSeparator:() => null }}
         noOptionsMessage={({inputValue}) => !inputValue ? "Start the fun!" : "Check your spelling..."}
         placeholder= 'Search a movie...'
         isLoading= {isLoading}
-        onKeyDown={(event)=> {
-          if(event.key === 'Enter'){
-            handleEnter()
-          }
-        }}
       />
   );
 }
