@@ -50,7 +50,7 @@ function Dropdwon({ name , options }) {
               background: "#888"
             },
             "::-webkit-scrollbar-thumb:hover": {
-              background: "red",
+              background: "cyan",
               cursor:"grab"
             },
             "::-webkit-scrollbar-thumb:active": {

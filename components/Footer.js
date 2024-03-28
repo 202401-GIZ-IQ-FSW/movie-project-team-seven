@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer className='text-white  bg-gradient-to-t from-cyan-800 w-full border-t'>
+    <footer className='text-white mt-8 bg-gradient-to-t from-cyan-800 w-full border-t border-cyan-900'>
       <div className='sm:px-12 py-5'>
         <h1 className='text-2xl lg:text-3xl mb-6 md:mb-0 font-semibold md:w-2/5 lg:leading-normal text-cyan-600'>Created By:</h1>
         <div className='flex flex-wrap justify-center items-center gap-10 py-6 px-5 sm:px-8'>

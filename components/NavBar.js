@@ -43,7 +43,7 @@ function NavBar() {
     
   return (
     //   Navbar - The Navbar should show up on all pages and contains the following:
-    <nav className="md:sticky top-0 w-full p-2 sm:px-4 grid grid-rows-2 grid-cols-[auto_auto] md:flex flex-wrap md:flex-nowrap items-center justify-between bg-gradient-to-b from-cyan-800 py-2 lg:flex-wrap lg:py-4">
+    <nav className=" top-0 w-full p-2 sm:px-4 grid grid-rows-2 grid-cols-[auto_auto] md:flex flex-wrap md:flex-nowrap items-center justify-between bg-gradient-to-b from-cyan-800 py-2 lg:flex-wrap lg:py-4">
         
         {/* Logo */}
         <div>
@@ -66,7 +66,7 @@ function NavBar() {
         </div>
 
             {/* Search Bar */}
-        <div className='h-8 group relative col-span-2'>
+        <div className='h-8 group relative col-span-2 md:ml-20'>
             <div className='group-hover:block border-b-[1px] border-gray-400 focus-within:border-cyan-300 has-[:focus]:block w-full md:w-[200px] md:hidden absolute right-0'>
                 <SearchDropdown/>
             </div>
