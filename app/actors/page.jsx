@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-const API_URL = 'https://api.themoviedb.org/3/trending/person/day?language=en-US&api_key=ba21689db16b6c3bc58c8f5c53ebd129';
+const API_URL = 'https://api.themoviedb.org/3/trending/person/week?language=en-US&api_key=ba21689db16b6c3bc58c8f5c53ebd129';
 
 const ActorsPage = () => {
 
@@ -28,10 +28,10 @@ const ActorsPage = () => {
   return (
     <div className="container  mx-auto p-4 text-center">
       <h1 className="text-3xl font-bold mb-4 py-4 text-cyan-400 border-b border-cyan-900">Trending Actors</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
         {actors.map(actor => (
           <Link href={`/actors/${actor.id}`}>
-          <div key={actor.id} className="group hover:scale-[105%] hover:bg-gray-900 bg-cyan-900 shadow-lg shadow-white hover:shadow-cyan-400 rounded-lg overflow-hidden">
+          <div key={actor.id} className="group hover:scale-[105%] w-[220px] hover:bg-gray-900 bg-cyan-900 shadow-lg shadow-white hover:shadow-cyan-400 rounded-lg overflow-hidden">
             <div className="relative h-60 w-full">
               <img
                 src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
