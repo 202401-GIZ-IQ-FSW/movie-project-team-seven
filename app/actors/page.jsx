@@ -1,6 +1,6 @@
 "use client";
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import ActorCard from '@/components/ActorCard';
 
 const API_URL = 'https://api.themoviedb.org/3/trending/person/week?language=en-US&api_key=ba21689db16b6c3bc58c8f5c53ebd129';
 
@@ -29,23 +29,7 @@ const ActorsPage = () => {
     <div className="container  mx-auto p-4 text-center">
       <h1 className="text-3xl font-bold mb-4 py-4 text-cyan-400 border-b border-cyan-900">Trending Actors</h1>
       <div className="flex flex-wrap justify-center gap-4">
-        {actors.map(actor => (
-          <Link href={`/actors/${actor.id}`}>
-          <div key={actor.id} className="group hover:scale-[105%] w-[220px] hover:bg-gray-900 bg-cyan-900 shadow-lg shadow-white hover:shadow-cyan-400 rounded-lg overflow-hidden">
-            <div className="relative h-60 w-full">
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-                alt={actor.name}
-                className="group-hover:opacity-[0.7] h-full w-full"
-              />
-            </div>
-            <div className="p-4">
-              <h2 className="text-xl text-white group-hover:text-cyan-600 font-bold mb-2">{actor.name}</h2>
-              <p className="text-white">{actor.known_for_department}</p>
-            </div>
-          </div>
-          </Link>
-        ))}
+          <ActorCard actors={actors}/>
       </div>
     </div>
   );
