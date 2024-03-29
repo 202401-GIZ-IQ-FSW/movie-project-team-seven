@@ -20,7 +20,7 @@ export default function SearchDropdown() {
   // load options using API call
   const loadOptions = (inputValue) => {
     isLoading = true;
-    return fetch(`https://api.themoviedb.org/3/search/movie?include_video=false&language=en-US&api_key=ba21689db16b6c3bc58c8f5c53ebd129&query=${inputValue}`)
+    return fetch(`https://api.themoviedb.org/3/search/movie?include_adult=false&include_video=false&language=en-US&api_key=ba21689db16b6c3bc58c8f5c53ebd129&query=${inputValue}`)
     .then(res => res.json())
     .then(data => {
       isLoading=false;
