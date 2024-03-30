@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import SingleActorCard from '@/components/SingleActorCard'
 import CustomSlider from '@/components/CustomSlider';
 
-export default function actore({params}) {
+export default function Actore({params}) {
 
   const [actorInfo, setActorInfo] = useState({});
   const [movies, setMovies] = useState([]);

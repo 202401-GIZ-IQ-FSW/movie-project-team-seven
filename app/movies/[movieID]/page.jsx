@@ -4,7 +4,7 @@ import ActorCard from '@/components/ActorCard';
 import CustomSlider from '@/components/CustomSlider';
 import { useRouter } from 'next/navigation';
 
-export default function movie({params}) {
+export default function Movie({params}) {
 
   const router = useRouter();
   async function getTrailer(id){

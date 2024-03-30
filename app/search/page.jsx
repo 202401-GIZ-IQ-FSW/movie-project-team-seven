@@ -1,12 +1,10 @@
 import React from 'react'
 import MovieSection from '@/components/MovieSection'
 
-function search() {
+export default function Search() {
   return (
     <div>
       <MovieSection/>
     </div>
   )
 }
-
-export default search
