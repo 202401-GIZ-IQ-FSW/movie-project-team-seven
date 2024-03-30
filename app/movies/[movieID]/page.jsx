@@ -53,7 +53,7 @@ export default function Movie({params}) {
     minutes-=60;
   }
   return (
-    <div className='flex flex-col justify-center items-center'>
+    <div className='flex flex-col justify-center items-center font-serif'>
       <div className='relative text-white w-[calc(100%-30px)] mx-auto my-8 flex justify-center items-start flex-col sm:flex-row gap-4 font-serif'>
         <img src={backdrop} alt={movieInfo.title} className="blur-sm z-[-1] absolute w-full top-0 opacity-50 h-full"/>
         <div className='w-[80%] min-w-[250px] max-w-[350px] mx-auto md:m-4 rounded-lg border-cyan-400 border-2 overflow-hidden'>

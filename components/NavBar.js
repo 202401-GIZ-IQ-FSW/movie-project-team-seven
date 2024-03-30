@@ -43,7 +43,7 @@ function NavBar() {
     
   return (
     //   Navbar - The Navbar should show up on all pages and contains the following:
-    <nav className=" top-0 w-full p-2 sm:px-4 grid grid-rows-2 grid-cols-[auto_auto] md:flex flex-wrap md:flex-nowrap items-center justify-between bg-gradient-to-b from-cyan-800 py-2 lg:flex-wrap lg:py-4">
+    <nav className=" top-0 w-full p-2 sm:px-4 grid grid-rows-2 grid-cols-[auto_auto] md:flex flex-wrap md:flex-nowrap items-center justify-between bg-gradient-to-b from-cyan-800 py-2 lg:flex-wrap lg:py-4 font-serif">
         
         {/* Logo */}
         <div>
