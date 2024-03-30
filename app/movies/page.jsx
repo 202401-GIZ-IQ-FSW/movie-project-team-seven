@@ -17,7 +17,7 @@ export default function Movies() {
 
 
   return (
-  <div className='w-full flex flex-col justify-center items-center'>
+  <div className='w-full flex flex-col justify-center items-center font-serif'>
   {sections}
   </div>
     )

@@ -17,7 +17,7 @@ export default function Actore({params}) {
   },[])
 
   return (
-    <div className='text-white'>
+    <div className='text-white font-serif'>
     <SingleActorCard actorInfo={actorInfo}/>
     <p className="text-[24px] font-serif border-b border-gray-600 m-4 text-cyan-500">Participated in:</p>
     <CustomSlider Movies={movies}/>

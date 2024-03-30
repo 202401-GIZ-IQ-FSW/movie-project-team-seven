@@ -3,7 +3,7 @@ import MovieSection from '@/components/MovieSection'
 
 export default function Search({params}) {
   return (
-    <div>
+    <div className='font-serif'>
         <MovieSection query={params.searchInput} />
     </div>
   )

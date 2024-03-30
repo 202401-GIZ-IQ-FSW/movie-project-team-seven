@@ -26,7 +26,7 @@ const ActorsPage = () => {
   }, []);
 
   return (
-    <div className="container  mx-auto p-4 text-center">
+    <div className="container  mx-auto p-4 text-center font-serif">
       <h1 className="text-3xl font-bold mb-4 py-4 text-cyan-400 border-b border-cyan-900">Trending Actors</h1>
       <div className="flex flex-wrap justify-center gap-4">
           <ActorCard actors={actors}/>
