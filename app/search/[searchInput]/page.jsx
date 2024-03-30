@@ -1,7 +1,7 @@
 import React from 'react'
 import MovieSection from '@/components/MovieSection'
 
-function search({params}) {
+export default function Search({params}) {
   return (
     <div>
         <MovieSection query={params.searchInput} />
@@ -9,4 +9,3 @@ function search({params}) {
   )
 }
 
-export default search

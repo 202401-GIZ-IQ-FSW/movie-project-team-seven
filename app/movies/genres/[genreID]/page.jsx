@@ -1,7 +1,7 @@
 import React from 'react'
 import MovieSection from '@/components/MovieSection'
 
-export default function genre({params}) {
+export default function Genre({params}) {
 
   return (
     <div>

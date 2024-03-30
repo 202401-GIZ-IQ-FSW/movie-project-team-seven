@@ -5,7 +5,7 @@ import { cardPlaceholder } from '@/app/page';
 import { Moviesoptions } from "@/components/NavBar";
 
 
-export default function movies() {
+export default function Genres() {
   const [sections, setSections]=useState(<MoviesSliderSection key='placeholder' sliderMovies={cardPlaceholder} isPlaceholder={true}/>);
   useEffect(() =>{
     setSections( Moviesoptions.filter(option => option.value !== "latest").map((option)=> fetch(`https://api.themoviedb.org/3/movie/${option.value}?include_adult=false&language=en-US&api_key=ba21689db16b6c3bc58c8f5c53ebd129`)
