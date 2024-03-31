@@ -36,11 +36,3 @@ const ActorsPage = () => {
 };
 
 export default ActorsPage;
-
-
-// <div className="group relative h-[100px] sm:h-[200px] md:h-[300px] lg:h-[400px] mx-[9px] w-[calc(100%-10px)] text-black text-[12px] flex justify-center items-end hover:items-center gap-8 md:hover:bg-[rgb(27,27,27,0.5)] hover:border border-cyan-400">
-//               <img src={(movie.id === cardPlaceholder.id)? require(movie.backdrop_path) :'https://image.tmdb.org/t/p/original' + movie.poster_path} alt="" className="group-hover:blur-sm z-[-1] absolute top-0 w-full h-full"/>
-//               <div className="min-h-[50%] p-2 flex justify-center items-center text-center w-full group-hover:h-full bg-[rgb(27,27,27,0.65)]">
-//                 <p className="text-[12px] md:text-[20px] text-cyan-400 font-serif">{movie.title}</p>
-//               </div>
-//             </div>

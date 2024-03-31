@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link';
 
-export default function Card({movie, isPlaceholder=false}) {
+export default function MovieCard({movie, isPlaceholder=false}) {
   
   const imagePath = isPlaceholder? "" : "https://image.tmdb.org/t/p/original";
   const poster = imagePath + movie.poster_path;

@@ -6,7 +6,6 @@ function Dropdwon({ name , options }) {
    // handle selection
    const router = useRouter();
    function handleSelect (input){
-     console.log(input.value)
      if(input.value === "all") {
        router.push(`/movies`);
      } else{
