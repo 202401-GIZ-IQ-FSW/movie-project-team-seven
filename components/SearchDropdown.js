@@ -7,7 +7,6 @@ export default function SearchDropdown() {
   // handle selection
   const router = useRouter();
   function handleSelect (input){
-    console.log(input.id)
     if(isNaN(input.id)) {
       router.push(`/search/${input.id}`);
     } else{

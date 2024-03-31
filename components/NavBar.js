@@ -17,7 +17,6 @@ function NavBar() {
     
     useEffect( () => {
         // fetch Genres from API
-        // console.log("use effect")
         fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=ba21689db16b6c3bc58c8f5c53ebd129')
             .then((response) => response.json())
             .then((data) => {
@@ -32,15 +31,6 @@ function NavBar() {
     },[])
 
 
-
-    const Movieoptions=[
-        {value: "all", label: "All"},
-        {value: "top_rated", label: "Top Rate"},
-        {value: "popular", label: "Popular"},
-        {value: "now_playing", label: "Now playing"},
-        {value: "upcoming", label: "Upcoming"},
-    ]
-    
   return (
     //   Navbar - The Navbar should show up on all pages and contains the following:
     <nav className=" top-0 w-full p-2 sm:px-4 grid grid-rows-2 grid-cols-[auto_auto] md:flex flex-wrap md:flex-nowrap items-center justify-between bg-gradient-to-b from-cyan-800 py-2 lg:flex-wrap lg:py-4 font-serif">
@@ -59,7 +49,7 @@ function NavBar() {
             <Dropdwon name="Genres" options={genres} />
             
             {/* Movies - This is another dropdown that contains the following options ["Top Rate", "Popular", "Latest", "Now playing", "Upcoming"] - Clicking on one of these options takes the user to the movies page (#2) and gives them the corresponding data. Each one of those has a dedicated API route. */}
-            <Dropdwon name="Movies" options={Movieoptions} />
+            <Dropdwon name="Movies" options={Moviesoptions} />
     
             {/* Actors - Goes to the Actors page (#4) and shows a list of all popular actors. */}
             <button className='hover:bg-gray-800 text-white rounded-lg py-2 px-6'><Link href="/actors">Actors</Link></button>

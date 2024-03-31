@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react'
-import Card from './Card';
+import MovieCard from './MovieCard';
 import { cardPlaceholder } from '@/app/page';
 
 
@@ -24,7 +24,7 @@ export default function MovieSection({option , query}) {
       fetch(url)
       .then(res =>  res.json())
       .then(data => {
-        setMovies(data.results)
+        setMovies(data.results.filter(movie => movie.adult === false))
     })
     } , [] )
 
@@ -33,10 +33,10 @@ export default function MovieSection({option , query}) {
 
     if(isPlaceholder){
         for(let  i = 0 ; i < 21 ; i++){
-            cards.push(<Card key={i} movie={cardPlaceholder[0]} isPlaceholder={isPlaceholder}/>)
+            cards.push(<MovieCard key={i} movie={cardPlaceholder[0]} isPlaceholder={isPlaceholder}/>)
         }
     }else{
-     cards = movies.map( movie => (<Card key={movie.id} movie={movie}/>))
+     cards = movies.map( movie => (<MovieCard key={movie.id} movie={movie}/>))
     }
 
       return (
