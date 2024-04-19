@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Dropdwon from './Dropdwon'
 import SearchDropdown from './SearchDropdown';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const Moviesoptions=[
     {value: "top_rated", label:'Top Rate'},
@@ -14,17 +15,14 @@ function NavBar() {
 
     const [genres, setGenres]=useState([])
 
-    
     useEffect( () => {
         // fetch Genres from API
         fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=ba21689db16b6c3bc58c8f5c53ebd129')
             .then((response) => response.json())
             .then((data) => {
-                    data.genres.unshift({name:"All", id:""})
                     const genresList = data.genres.map(genre => ({
                         value: genre.id, label: genre.name
                     }));
-
                 //set the data to our state variable
                 setGenres(genresList);
             })
@@ -33,14 +31,20 @@ function NavBar() {
 
   return (
     //   Navbar - The Navbar should show up on all pages and contains the following:
-    <nav className=" top-0 w-full p-2 sm:px-4 grid grid-rows-2 grid-cols-[auto_auto] md:flex flex-wrap md:flex-nowrap items-center justify-between bg-gradient-to-b from-cyan-800 py-2 lg:flex-wrap lg:py-4 font-serif">
+    <nav className="md:sticky z-50 top-0 w-full py-1 px-4 grid grid-rows-2 grid-cols-[auto_auto] md:flex flex-wrap md:flex-nowrap items-center justify-between bg-gradient-to-bl from-cyan-800 lg:flex-wrap lg:py-4 font-serif">
         
         {/* Logo */}
         <div>
-
-        <Link href="/" className='flex justify-center items-center gap-2'>
-            <img className='w-[50px] ' src="/images/Phoenix-logo.png" alt='logo'/>
-            <h1 className='max-sm:hidden text-cyan-600'>PHOENIX</h1>
+            <Link href="/" className='flex justify-center items-center gap-2'>
+                <Image
+                    quality={100}
+                    unoptimized={true}
+                    // priority={true}
+                    // loading='eager'
+                    width={"100"} height={"100"}
+                    className='w-[50px] ' 
+                    src="/images/Phoenix-logo.png" alt='logo'/>
+                <h1 className='max-sm:hidden text-cyan-600'>PHOENIX</h1>
             </Link>
         </div>
         
@@ -52,7 +56,7 @@ function NavBar() {
             <Dropdwon name="Movies" options={Moviesoptions} />
     
             {/* Actors - Goes to the Actors page (#4) and shows a list of all popular actors. */}
-            <button className='hover:bg-gray-800 text-white rounded-lg py-2 px-6'><Link href="/actors">Actors</Link></button>
+            <Link href="/actors"><button className='hover:bg-gray-800 text-white rounded-lg py-2 px-6'>Actors</button></Link>
         </div>
 
             {/* Search Bar */}
