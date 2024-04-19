@@ -26,6 +26,49 @@ body{
   background-color: black;
 }
 
-.slick-next:before {
-  margin-right: 20px;
+/* Adjust react slick arrows */
+button.slick-next::before, button.slick-prev::before {
+  content: '';
+  display: block;
+  width: 25px;
+  height: 25px;
+  border-right: 5px solid cyan;
+  border-bottom: 5px solid cyan;
+}
+
+button.slick-next::before {
+  transform: translate(-50%) rotate(-45deg);
+}
+
+button.slick-prev::before {
+  transform: translate(50%) rotate(135deg);
+}
+
+button.slick-next {
+  top: 50%;
+  right: 0;
+  z-index: 1;
+}
+button.slick-prev {
+  top: 50%;
+  left: 0;
+  z-index: 1;
+}
+
+/* fix variableWidth issue in react slick */
+.customSlider div.slick-track{
+  display: flex;
+}
+
+/* Adjust slider dots */
+ul.slick-dots li button:before{
+  color: rgb(80, 154, 154);
+}
+ul.slick-dots li.slick-active button:before{
+  color: cyan;
+  font-size: 8px;
+}
+/* main slider dots */
+.mainSlider .slick-dots{
+  bottom: 10px;
 }

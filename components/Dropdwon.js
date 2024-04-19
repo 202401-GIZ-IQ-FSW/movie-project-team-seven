@@ -6,11 +6,7 @@ function Dropdwon({ name , options }) {
    // handle selection
    const router = useRouter();
    function handleSelect (input){
-     if(input.value === "all") {
-       router.push(`/movies`);
-     } else{
-       router.push(`/movies/genres/${input.value}`)
-     }
+    router.push(`/movies/genres/${input.value}`)
    }
     // custom style for Select component 
     const styles ={
@@ -19,7 +15,6 @@ function Dropdwon({ name , options }) {
             backgroundColor: 'transparent',
             color: 'white', 
             border:"none", 
-            fontSize:"16px", 
             cursor: "pointer",
             width: "100px"
         }),

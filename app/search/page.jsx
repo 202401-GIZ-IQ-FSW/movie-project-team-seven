@@ -1,10 +1,10 @@
 import React from 'react'
-import MovieSection from '@/components/MovieSection'
+import Movies from '../movies/page'
 
 export default function Search() {
   return (
     <div className='font-serif'>
-      <MovieSection/>
+      <Movies/>
     </div>
   )
 }

@@ -1,52 +1,32 @@
-"use client";
-import React, { useEffect, useState } from 'react'
 import MovieCard from './MovieCard';
-import { cardPlaceholder } from '@/app/page';
 
 
-export default function MovieSection({option , query}) {
+export default async function MovieSection({option , query}) {
   const genreData = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${option}&api_key=ba21689db16b6c3bc58c8f5c53ebd129`;
   const movieTypeData = `https://api.themoviedb.org/3/movie/${option}?api_key=ba21689db16b6c3bc58c8f5c53ebd129`;
-  const trendingData =`https://api.themoviedb.org/3/trending/movie/day?api_key=ba21689db16b6c3bc58c8f5c53ebd129`;
   const searchQuery = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&api_key=ba21689db16b6c3bc58c8f5c53ebd129&query=${query}`
+  const trendingData =`https://api.themoviedb.org/3/trending/movie/day?api_key=ba21689db16b6c3bc58c8f5c53ebd129`;
   
-  // see if the parameter is a id of genre (number) or type name (string), then use it to fetch
+  // see if the option is an id of genre (number) or movie type (string), then use it to fetch, else use the query to fetch, else use trending
   let url;
   if(option){
     url = isNaN(option)? movieTypeData : genreData;
   } else {
-    url = query? searchQuery : trendingData ;
+    url = query? searchQuery : trendingData;
   }
   
-    const [movies, setMovies] = useState([])
-    useEffect( () => {
-
-      fetch(url)
+  const movies = await fetch(url)
       .then(res =>  res.json())
-      .then(data => {
-        setMovies(data.results.filter(movie => movie.adult === false))
-    })
-    } , [] )
+      .then(data => (data.results.filter(movie => movie.adult === false)))
 
-    let cards =[];
-    const isPlaceholder = (movies.length > 0)?  false : true;
+  const cards = movies.map( movie => (<MovieCard key={movie.id} movie={movie}/>))
 
-    if(isPlaceholder){
-        for(let  i = 0 ; i < 21 ; i++){
-            cards.push(<MovieCard key={i} movie={cardPlaceholder[0]} isPlaceholder={isPlaceholder}/>)
-        }
-    }else{
-     cards = movies.map( movie => (<MovieCard key={movie.id} movie={movie}/>))
-    }
-
-      return (
-        <div>
-          <div className="w-full p-2 border-b-2 border-gray-500 text-center">
-            <p className="text-cyan-400 text-[24px] font-serif">{query? "Search Result" : option ? "Your Choice" : "Trending"}</p>
-          </div>
-          <div className="w-fit m-[16px] flex flex-wrap justify-center items-center gap-6">
-            {cards}
-          </div> 
-        </div>
-      )
+  return (
+    <div>
+      <p className="text-center text-[24px] font-serif border-b border-cyan-900 m-4 text-cyan-500">{query? "Search Result" : option ? "Your Choice" : "Trending"}</p>
+      <div className="m-[16px] flex flex-wrap justify-center items-center gap-3">
+        {cards}
+      </div> 
+    </div>
+  )
 }

@@ -1,24 +1,21 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import MoviesSliderSection from "@/components/MoviesSliderSection";
-import { cardPlaceholder } from '@/app/page';
-import { Moviesoptions } from "@/components/NavBar";
-
+import React, { Suspense } from "react"
+import SectionSkeleton from "@/components/SectionSkeleton"
+import MoviesSliderSection from "@/components/MoviesSliderSection"
 
 export default function Movies() {
-  const [sections, setSections]=useState(<MoviesSliderSection key='placeholder' sliderMovies={cardPlaceholder} isPlaceholder={true}/>);
-  useEffect(() =>{
-    setSections( Moviesoptions.map((option)=> fetch(`https://api.themoviedb.org/3/movie/${option.value}?include_adult=false&language=en-US&api_key=ba21689db16b6c3bc58c8f5c53ebd129`)
-    .then(res =>  res.json())
-    .then(data => (<MoviesSliderSection key={option.value} sliderMovies={data.results} option={option}/>)
-    ))
-    )
-     },[])
-
+  const Moviesoptions=[
+    {value: "top_rated", label:'Top Rate'},
+    {value: "popular", label:'Popular'},
+    {value: "now_playing", label:'Now playing'},
+    {value: "upcoming", label:'Upcoming'},
+  ]
+  const sections = Moviesoptions.map((option)=> (<MoviesSliderSection key={option.value} option={option}/>))
 
   return (
-  <div className='w-full flex flex-col justify-center items-center font-serif'>
-  {sections}
+  <div className='w-full font-serif'>
+    <Suspense fallback={<SectionSkeleton/>}>
+      {sections}
+    </Suspense>
   </div>
     )
 }
