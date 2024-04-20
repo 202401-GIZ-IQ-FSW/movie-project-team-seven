@@ -72,7 +72,7 @@ function Dropdwon({ name , options }) {
         <Select 
         id={name}
         options={options} 
-        defaultValue={null} 
+        value={null}  // prevent the menu from changing placeholder on select
         placeholder={name} 
         instanceId={name}
         onChange={(inputValue) => handleSelect(inputValue)}

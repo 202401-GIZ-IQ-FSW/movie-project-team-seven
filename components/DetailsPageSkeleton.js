@@ -8,8 +8,6 @@ export default function DetailsPageSkeleton() {
             <Image
               quality={100}
               unoptimized={true}
-              // priority={true}
-              // loading='eager'
               width={"100"} height={"100"}
               className='w-full' 
               src="/images/Phoenix-logo.png" alt='logo'/>

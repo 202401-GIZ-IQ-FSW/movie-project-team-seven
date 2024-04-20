@@ -18,8 +18,6 @@ export default function MainSlider({movies}) {
             <Image 
             quality={100}
             unoptimized={true}
-            // priority={true}
-            // loading='eager'
             src={backdrop} width={"100"} height={"100"} alt="" 
             className="group-hover:blur-sm sm:blur-sm z-[-1] w-full h-full"/>
           <div className="absolute bottom-0 w-full max-sm:group-hover:h-full sm:h-full flex items-center justify-center gap-8 bg-[rgb(27,27,27,0.3)] p-2">
@@ -28,7 +26,6 @@ export default function MainSlider({movies}) {
               <Image
               quality={100}
               unoptimized={true}
-              // priority={true}
               className='border w-full h-full' 
               width={"200"} height={"300"} src ={poster} alt={movie.title}/>
             </div>

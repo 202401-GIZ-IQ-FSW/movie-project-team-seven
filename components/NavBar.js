@@ -39,8 +39,7 @@ function NavBar() {
                 <Image
                     quality={100}
                     unoptimized={true}
-                    // priority={true}
-                    // loading='eager'
+                    priority={true}
                     width={"100"} height={"100"}
                     className='w-[50px] ' 
                     src="/images/Phoenix-logo.png" alt='logo'/>

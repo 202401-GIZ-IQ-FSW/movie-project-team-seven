@@ -89,6 +89,7 @@ export default function SearchDropdown() {
       <AsyncSelect
         instanceId='search'
         name='search'
+        value={null}  // prevent the menu from changing placeholder on select
         cacheOptions
         defaultOptions
         getOptionLabel={movie => movie.title}
