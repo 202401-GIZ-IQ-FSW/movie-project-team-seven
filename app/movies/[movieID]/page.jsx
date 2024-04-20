@@ -8,11 +8,13 @@ import { Suspense } from 'react';
 
 export default async function Movie({params}) {
 
-    const movieInfo= await fetch(`https://api.themoviedb.org/3/movie/${params.movieID}?append_to_response=credits,similar&api_key=ba21689db16b6c3bc58c8f5c53ebd129`)
+    const movieInfo= await fetch(`https://api.themoviedb.org/3/movie/${params.movieID}?append_to_response=credits,similar,videos&api_key=ba21689db16b6c3bc58c8f5c53ebd129`)
     .then(res => res.json())
   const director = movieInfo.credits.crew.filter(crew => crew.job == "Director")[0]?.name;
   const actors = movieInfo.credits.cast.slice(0,5);
   const similarMovies = movieInfo.similar.results.filter(movie => movie.adult === false);
+  const videoKey = movieInfo.videos.results[0] ? movieInfo.videos.results[0].key : null;
+  console.log(videoKey)
 
   const imagePath = "https://image.tmdb.org/t/p/original"
   const poster = movieInfo.poster_path? imagePath + movieInfo.poster_path : "/images/placeholder-movies.png";
@@ -78,7 +80,7 @@ export default async function Movie({params}) {
                 </div>
             </div>
             <div>
-            <TrailerButton id={movieInfo.id}/>
+            <TrailerButton videoKey={videoKey}/>
             </div>
         </div>
         </div>

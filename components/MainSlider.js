@@ -36,10 +36,7 @@ export default function MainSlider({movies}) {
                   <span className="max-sm:hidden block text-gray-400 text-sm">{releaseDate}</span>
                 </p>
                 <p className="max-sm:hidden text-white line-clamp-6">{movie.overview}</p>
-                <div className='max-sm:hidden max-sm:group-hover:flex flex justify-center gap-2 my-4 text-[12px]'>
-                  <Link href={"./movies/"+ movie.id}><button className="bg-black border hover:border-cyan-400 text-white rounded-md p-2 ">More Details</button></Link>
-                  <TrailerButton id={movie.id}/>
-                </div>
+                <Link href={"./movies/"+ movie.id}><button className="max-sm:hidden max-sm:group-hover:block bg-black border hover:border-cyan-400 text-white rounded-md p-2 ">More Details</button></Link>
               </div>
             </div>
           </div>
