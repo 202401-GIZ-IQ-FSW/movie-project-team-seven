@@ -7,7 +7,7 @@ export default function MovieCard({movie}) {
   const rate = (Math.round((movie.vote_average + Number.EPSILON) * 10) / 10);
 
   const imagePath = "https://image.tmdb.org/t/p/original";
-  const poster = movie.poster_path? imagePath + movie.poster_path: '/public/images/placeholder-movies.png';
+  const poster = movie.poster_path? imagePath + movie.poster_path: '/images/placeholder-movies.png';
         return( 
             <Link href={ "/movies/" + movie.id } >
               <div className="group relative mx-[2px] h-[200px] w-[150px] flex justify-center items-end hover:items-center gap-8 hover:border-cyan-400 border border-cyan-900 overflow-hidden">
